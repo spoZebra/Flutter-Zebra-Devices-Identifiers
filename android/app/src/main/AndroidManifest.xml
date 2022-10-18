@@ -2,9 +2,11 @@
     package="com.spozebra.flutter_zebra_device_ids">
 
     <uses-permission android:name="com.symbol.emdk.permission.EMDK" />
+    <uses-permission android:name="com.zebra.provider.READ" />
 
+    <!--  Required for Content provider restrictions introduced in Android 11 -->
     <queries>
-
+        <package android:name="com.zebra.zebracontentprovider" />
         <package android:name="com.symbol.emdk.emdkservice" />
     </queries>
 

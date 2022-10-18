@@ -40,12 +40,24 @@ class EmdkEngine : EMDKManager.EMDKListener {
     }
 
 
-    fun setProfile(profileName: String?, extraData: Array<String?>?): EMDKResults? {
+    fun setProfile(xml: String?): EMDKResults? {
         return try {
+            val params = arrayOfNulls<String>(1)
+            // Append default profile
+            params[0] = """<wap-provisioningdoc>
+            <characteristic type="ProfileInfo">
+            <parm name="created_wizard_version" value="11.0.1" />
+            </characteristic>
+            <characteristic type="Profile">
+            <parm name="ProfileName" value="OEMService" />
+            <parm name="ModifiedDate" value="2022-08-17 10:20:36" />
+            <parm name="TargetSystemVersion" value="10.4" />$xml
+            </characteristic>
+            </wap-provisioningdoc>"""
             profileManager!!.processProfile(
-                profileName,
+                "MyProfile",
                 ProfileManager.PROFILE_FLAG.SET,
-                extraData
+                params
             )
         } catch (ex: Exception) {
             Log.e(TAG, ex.toString())
