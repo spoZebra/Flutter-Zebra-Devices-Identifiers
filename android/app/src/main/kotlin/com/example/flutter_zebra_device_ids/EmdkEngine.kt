@@ -1,6 +1,7 @@
 package com.spozebra.flutter_zebra_device_ids
 
 import android.content.Context
+import com.example.flutter_zebra_device_ids.IEmdkStatusListener
 import com.symbol.emdk.EMDKManager
 import com.symbol.emdk.EMDKResults
 import com.symbol.emdk.ProfileManager
@@ -9,13 +10,16 @@ import io.flutter.Log
 
 class EmdkEngine : EMDKManager.EMDKListener {
 
+    private lateinit var listener : IEmdkStatusListener
     private var emdkManager: EMDKManager? = null
     private var profileManager: ProfileManager? = null
 
-    fun initEmdk(context : Context) : Boolean {
+    fun initEmdk(context : Context, listener : IEmdkStatusListener) : Boolean {
 
         if(emdkManager != null)
             throw ExceptionInInitializerError("Emdk already initialized")
+
+        this.listener = listener
 
         val results = EMDKManager.getEMDKManager(context, this)
 
@@ -27,6 +31,8 @@ class EmdkEngine : EMDKManager.EMDKListener {
             emdkManager!!.release()
             emdkManager = null
         }
+        // notify closed
+        listener.emdkClosed()
         Log.d(TAG, "EMDK closed unexpectedly! Please close and restart the application.")
     }
 
@@ -37,6 +43,9 @@ class EmdkEngine : EMDKManager.EMDKListener {
 
         //Get the ProfileManager object to process the profiles
         profileManager = emdkManager.getInstance(EMDKManager.FEATURE_TYPE.PROFILE) as ProfileManager
+
+        // notify successful initialization
+        listener.emdkOpened()
     }
 
 
