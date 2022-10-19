@@ -52,7 +52,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  String serialNumber = "N/A";
 
   static const platform = MethodChannel('spozebra/identifiers');
 
@@ -65,13 +65,26 @@ class _MyHomePageState extends State<MyHomePage> {
 
     // Adding just the characteristic as we will use the default profile
     _setProfile("""
-            <characteristic type="AccessMgr" version="10.4">
-                        <parm name="emdk_name" value="" />
-                        <parm name="ServiceAccessAction" value="4" />
-                        <parm name="ServiceIdentifier" value="content://oem_info/oem.zebra.secure/build_serial" />
-                        <parm name="CallerPackageName" value="com.spozebra.flutter_zebra_device_ids" />
-                        <parm name="CallerSignature" value="MIIDZzCCAk+gAwIBAgIEQhPGQTANBgkqhkiG9w0BAQsFADBkMQswCQYDVQQGEwJJVDEOMAwGA1UECBMFTWlsYW4xDjAMBgNVBAcTBU1pbGFuMRswGQYDVQQLExJaZWJyYSBUZWNobm9sb2dpZXMxGDAWBgNVBAMTD1NpbW9uZSBQb3p6b2JvbjAeFw0yMjEwMTgxNDQwMDBaFw00NzEwMTIxNDQwMDBaMGQxCzAJBgNVBAYTAklUMQ4wDAYDVQQIEwVNaWxhbjEOMAwGA1UEBxMFTWlsYW4xGzAZBgNVBAsTElplYnJhIFRlY2hub2xvZ2llczEYMBYGA1UEAxMPU2ltb25lIFBvenpvYm9uMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAkzfqijH+SS/JhzuFioWWf+w3+yIsN0kuqKINlK8ZmWCB0lFC6rItI++6q5vFnr1idS0miBPA03l/29JAGtZtpRIe1fdo/+NsajxSZ9K5EXgMEw9a7AMt3cKbI77itK2r1hCpMi6gLt/3KEn6tkHVBc5GwLXx+OLr7rOo4NNMqB6ysKYTpIZgP6GSoVS1GJyF9Iq4ADJVMZYUO5TuucniCveCxylR8VGTJjIir3stjGuhB85xEOvgMsIaUfur2AIjJxfzwQ0VSRdow4UlHl9NoTBrRtmz+6rAdlYGb/JgwvuU3GNp3keheejmf2FfUWSk9g/k4D7rPjCx5z5sqVnG7QIDAQABoyEwHzAdBgNVHQ4EFgQUVIcAnVgaNILeuFxEbOyRzQcrNvswDQYJKoZIhvcNAQELBQADggEBACRilc4zfcNnpeBl12Vf91lEH4Il/hlOkocP5/4N89SNTgDAAcXPApv6UxOteM3fv74oYnzwhq/FNziYAtDwgGdHqVpSeR7pKdQbt5PYdYHJ8Bp6EDA60Nq7hhIvfjMRLko41XNwKJA0ERk/nLPwS1STIS4KCmv999R0GewLWW03Tkz1E313aJZcHJ85KxI/DQzTO2YK0kuWfcE62/LdGkxA79JNTcBHVDQ00jPx8yKTafAXRQRFFReM3lcnb5NfpN7EQe3YaXYi8KEk9E41xN5kjYd2LDv0yF1jZKZIJVqqQdVnr1LqY8MGRgFur01atujkxcSjobTwZvFfr5Z+/h0=" />
-            </characteristic>""");
+    <wap-provisioningdoc>
+  <characteristic type="ProfileInfo">
+    <parm name="created_wizard_version" value="11.0.0"/>
+  </characteristic>
+  <characteristic type="Profile">
+    <parm name="ProfileName" value="MyProfile"/>
+    <parm name="ModifiedDate" value="2022-10-19 10:42:21"/>
+    <parm name="TargetSystemVersion" value="10.4"/>
+      
+    <characteristic type="AccessMgr" version="10.4">
+      <parm name="emdk_name" value="accessManager"/>
+      <parm name="ServiceAccessAction" value="4"/>
+      <parm name="ServiceIdentifier" value="content://oem_info/oem.zebra.secure/build_serial"/>
+      <parm name="CallerPackageName" value="com.spozebra.flutter_zebra_device_ids"/>
+      <parm name="CallerSignature" value="MIIDZzCCAk+gAwIBAgIEQhPGQTANBgkqhkiG9w0BAQsFADBkMQswCQYDVQQGEwJJVDEOMAwGA1UECBMFTWlsYW4xDjAMBgNVBAcTBU1pbGFuMRswGQYDVQQLExJaZWJyYSBUZWNobm9sb2dpZXMxGDAWBgNVBAMTD1NpbW9uZSBQb3p6b2JvbjAeFw0yMjEwMTgxNDQwMDBaFw00NzEwMTIxNDQwMDBaMGQxCzAJBgNVBAYTAklUMQ4wDAYDVQQIEwVNaWxhbjEOMAwGA1UEBxMFTWlsYW4xGzAZBgNVBAsTElplYnJhIFRlY2hub2xvZ2llczEYMBYGA1UEAxMPU2ltb25lIFBvenpvYm9uMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAkzfqijH+SS/JhzuFioWWf+w3+yIsN0kuqKINlK8ZmWCB0lFC6rItI++6q5vFnr1idS0miBPA03l/29JAGtZtpRIe1fdo/+NsajxSZ9K5EXgMEw9a7AMt3cKbI77itK2r1hCpMi6gLt/3KEn6tkHVBc5GwLXx+OLr7rOo4NNMqB6ysKYTpIZgP6GSoVS1GJyF9Iq4ADJVMZYUO5TuucniCveCxylR8VGTJjIir3stjGuhB85xEOvgMsIaUfur2AIjJxfzwQ0VSRdow4UlHl9NoTBrRtmz+6rAdlYGb/JgwvuU3GNp3keheejmf2FfUWSk9g/k4D7rPjCx5z5sqVnG7QIDAQABoyEwHzAdBgNVHQ4EFgQUVIcAnVgaNILeuFxEbOyRzQcrNvswDQYJKoZIhvcNAQELBQADggEBACRilc4zfcNnpeBl12Vf91lEH4Il/hlOkocP5/4N89SNTgDAAcXPApv6UxOteM3fv74oYnzwhq/FNziYAtDwgGdHqVpSeR7pKdQbt5PYdYHJ8Bp6EDA60Nq7hhIvfjMRLko41XNwKJA0ERk/nLPwS1STIS4KCmv999R0GewLWW03Tkz1E313aJZcHJ85KxI/DQzTO2YK0kuWfcE62/LdGkxA79JNTcBHVDQ00jPx8yKTafAXRQRFFReM3lcnb5NfpN7EQe3YaXYi8KEk9E41xN5kjYd2LDv0yF1jZKZIJVqqQdVnr1LqY8MGRgFur01atujkxcSjobTwZvFfr5Z+/h0="/>
+    </characteristic>
+  </characteristic>
+</wap-provisioningdoc>
+
+""");
 
     _getSerialNumber();
   }
@@ -93,23 +106,15 @@ class _MyHomePageState extends State<MyHomePage> {
   }
   _getSerialNumber() async {
     try {
-      var serialNumber = await platform.invokeMethod('getSerialNumber');
-      log(serialNumber);
+      var sn = await platform.invokeMethod('getSerialNumber');
+      log(sn);
+      setState(() {
+        serialNumber = sn as String;
+      });
 
     } on PlatformException catch (e) {
         log(e.stacktrace ?? "");
     }
-  }
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
   }
 
   @override
@@ -147,20 +152,15 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
-              'You have pushed the button this many times:',
+              'Serial Number:',
             ),
             Text(
-              '$_counter',
+              serialNumber,
               style: Theme.of(context).textTheme.headline4,
             ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }

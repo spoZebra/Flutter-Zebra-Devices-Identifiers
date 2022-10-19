@@ -36,7 +36,7 @@ class MainActivity: FlutterActivity() {
 
             } else if (call.method!!.contentEquals("getSerialNumber")) {
                 val serialNumber = retrieveSerialNumber()
-                if (serialNumber.isNullOrEmpty())
+                if (!serialNumber.isNullOrEmpty())
                     result.success(serialNumber)
                 else
                     result.error("Unable to find serial number", "", "")
