@@ -1,16 +1,11 @@
-# flutter_zebra_device_ids
+# Flutter Zebra Device Identifiers
 
-A new Flutter project.
+Starting with Android 10, Google restricted the way of accessing non-resettable identifiers such as SN, IMEI etc.
 
-## Getting Started
+On Zebra devices we can still retrieve these values by using Zebra custom Content Provider together with EMDK.
 
-This project is a starting point for a Flutter application.
+Setup details can be found here: https://developer.zebra.com/blog/granting-permission-access-serial-imei-numbers-mobile-computers-running-a10
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### More...
+- Java: https://github.com/darryncampbell/OEMInfo-DeviceIdentifiers-Sample-Android
+- Kotlin: https://github.com/ZebraDevs/oeminfo-test
