@@ -3,7 +3,7 @@
     <parm name="created_wizard_version" value="11.0.0"/>
   </characteristic>
   <characteristic type="Profile">
-    <parm name="ProfileName" value="MyProfile"/>
+    <parm name="ProfileName" value="AccessMgrSerialNum"/>
     <parm name="ModifiedDate" value="2022-10-19 10:42:21"/>
     <parm name="TargetSystemVersion" value="10.4"/>
 

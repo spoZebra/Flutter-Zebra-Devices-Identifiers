@@ -25,8 +25,8 @@ class MainActivity: FlutterActivity(), IEmdkStatusListener {
                     initEmdk(result)
                 }
                 call.method!!.contentEquals("setProfile") -> {
-                    val xml = call.argument<String>("xml")
-                    setProfile(result, xml!!)
+                    val profileName = call.argument<String>("profileName")
+                    setProfile(result, profileName!!)
                 }
                 call.method!!.contentEquals("getSerialNumber") -> {
                     val uri = "content://oem_info/oem.zebra.secure/build_serial"
@@ -42,10 +42,10 @@ class MainActivity: FlutterActivity(), IEmdkStatusListener {
         else
             result.error("KO", "Unable to initialize Emdk", "")
     }
-    private fun setProfile(result : MethodChannel.Result, xml : String){
-        val r = EmdkEngine.getInstance().setProfile(xml)
+    private fun setProfile(result : MethodChannel.Result, profileName : String){
+        val r = EmdkEngine.getInstance().setProfile(profileName)
 
-        if (r!!.statusCode == EMDKResults.STATUS_CODE.SUCCESS)
+        if (r!!.statusCode == EMDKResults.STATUS_CODE.SUCCESS || r!!.statusCode == EMDKResults.STATUS_CODE.CHECK_XML)
             result.success("OK")
         else
             result.error(r.statusString, r.extendedStatusMessage, "")

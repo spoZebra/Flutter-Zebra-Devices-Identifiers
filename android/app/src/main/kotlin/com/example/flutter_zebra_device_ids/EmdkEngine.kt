@@ -49,14 +49,13 @@ class EmdkEngine : EMDKManager.EMDKListener {
     }
 
 
-    fun setProfile(xml: String?): EMDKResults? {
+    fun setProfile(profileName: String?): EMDKResults? {
         return try {
-            val params = arrayOfNulls<String>(1)
-            params[0] = xml
+            val params = arrayOfNulls<String>(0)
 
             val test :Array<String>? = null
             profileManager!!.processProfile(
-                "MyProfile",
+                profileName,
                 ProfileManager.PROFILE_FLAG.SET,
                 test
             )
