@@ -1,5 +1,4 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.spozebra.flutter_zebra_device_ids">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="com.symbol.emdk.permission.EMDK" />
     <uses-permission android:name="com.zebra.provider.READ" />

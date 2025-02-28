@@ -70,6 +70,7 @@ android {
             signingConfig signingConfigs.defaultKey
         }
     }
+    namespace 'com.spozebra.flutter_zebra_device_ids'
 }
 
 flutter {
