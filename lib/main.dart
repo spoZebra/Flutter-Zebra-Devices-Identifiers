@@ -109,7 +109,7 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
             ),
             Text(
               ref.watch(_serialNumberProvider),
-              style: Theme.of(context).textTheme.headline4,
+              style: Theme.of(context).textTheme.titleMedium,
             ),
           ],
         ),
